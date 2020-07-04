@@ -3,8 +3,6 @@ from train_save_play import train_save_policy
 from Q_QF import TabularQ, NNQ, Q_learn, Q_learn_batch, make_NN
 
 
-# C:\Users\alexk\Desktop\programming_projects\ai_projects\tic_tac_toe\policies
-
 
 # PARAMS
 filename = './policies/tabQ_1M'
