@@ -4,7 +4,7 @@ import numpy as np
 class TicTacToeMDP():
     """
     Deterministic Markov Decision Process for simulating games of tic tac toe.
-    MDP keeps represents state as row vector. Agents deal with corresponding integer states.
+    MDP keeps represents state as row vector. Agents deal with correspodning integer states.
         i.e. internal vector state [2,1,0,0,0,2,1,1,2] = 211200012 as an integer state.
 
     Args:
@@ -13,7 +13,6 @@ class TicTacToeMDP():
     """
 
     def __init__(self, rewards={'win': 1, 'loss': -1, 'tie': 0}, discount_factor=0.9):
-
         self.rewards = rewards
         self.state = np.zeros((1, 9))
         self.hashed_state = 0

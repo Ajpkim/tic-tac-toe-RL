@@ -14,9 +14,8 @@ def sim_episode(mdp, pi) -> list:
         - list episode history (state, action, reward, s_prime) for every step of game.
     """
 
-    s = mdp.reset()  # initialize state
-
-    # initialize list of state, action, reward tuples for episode (both players)
+    s = mdp.reset()  # initialize state as hashed blank game state
+    # list of state, action, reward tuples for entire episode (both players)
     all_s_a_r = []
 
     while True:  # play game
@@ -39,6 +38,7 @@ def sim_episode(mdp, pi) -> list:
         if mdp.check_game_over():
             break
 
+    # Handle episode data for training:
     # split episode according to player_id to provide data from player POV.
     p1_s_a_r = all_s_a_r[::2]  # odd steps
     p2_s_a_r = all_s_a_r[1::2]  # even steps
@@ -53,7 +53,6 @@ def sim_episode(mdp, pi) -> list:
     # create (s, a, r, s_prime) tuples for Q_learning
     p1_episode = [p1_s_a_r[i] + (p1_s_a_r[i+1][0],)
                   for i in range(len(p1_s_a_r)-1)]
-
     # player last move has no s_prime
     p1_episode.append(p1_s_a_r[-1] + (None,))
 

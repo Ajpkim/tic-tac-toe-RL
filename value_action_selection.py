@@ -1,5 +1,7 @@
 import random
 
+# Functions for selecting actions, greedy & random, and getting max Q_vals
+
 
 def value(Q, s, possible_actions):
     "Return estimated max q value for state s given possible actions in the mdp"
@@ -19,7 +21,7 @@ def epsilon_greedy(Q, s, possible_actions, eps=0.3):
     return greedy(Q, s, possible_actions)
 
 
-def random_policy(Q, s, poss_actions):  # take 1 just so it matches other policy funcs
+def random_policy(Q, s, poss_actions):
     "Return random action from given possible actions"
     return random.choice(poss_actions)
 
