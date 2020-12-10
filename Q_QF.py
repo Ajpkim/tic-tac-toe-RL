@@ -68,10 +68,11 @@ def Q_learn(mdp, Q, iters, n_episodes, lr=.1, eps=.3, verbose=False):
                 if s_prime is None:
                     target = r
                 else:
-                    possible_actions = mdp.possible_actions_from_hash(s)
+                    # SHOULD THIS BE S_PRIME NOT S??? I THINK SO...
+                    possible_actions = mdp.possible_actions_from_hash(s_prime)
                     target = r + mdp.discount_factor * \
                         value(Q, s_prime, possible_actions)
-                    q_targets += [(s, a, target)]
+                q_targets += [(s, a, target)]
 
         Q.update(q_targets, lr)
     return Q
